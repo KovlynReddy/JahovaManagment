@@ -75,8 +75,9 @@ namespace JahovaManagment.Forms
 
         private void Confirm_Click(object sender, EventArgs e)
         {
+            var selectedTask = (comboBox2.SelectedItem as ATask);
             DailyEntry newentry = new DailyEntry();
-            newentry.TaskId = (comboBox2.SelectedItem as ATask).TaskId;
+            newentry.TaskId = selectedTask.TaskId;
             newentry.EmployeeId = (comboBox1.SelectedItem as Employee).EmployeeID;
             newentry.DateTime = DateTime.Now;
             newentry.DEID = Guid.NewGuid().ToString(); 
@@ -102,7 +103,6 @@ namespace JahovaManagment.Forms
             var producttasks = tasks.Where(m=>m.JobId==theetasks.JobId).ToList() ;
             var jobproducts = products.Where(m=>m.JobId == theetasks.JobId).ToList();
 
-
            // var productasks = tasks.Where(m=>m.JobId == taskproduct.JobId).ToList();
            // var today = new ReportsDB().GetAllTodayEntry();
            // today = today.Where(m => m.Date.Date == DateTime.Today && m.JobId == theetasks.JobId).ToList();
@@ -124,7 +124,28 @@ namespace JahovaManagment.Forms
 
             }
 
+            selectedTask = new EmployeeDB().GetAllTasks().FirstOrDefault(m=>m.TaskId == selectedTask.TaskId);
             // if all products done , job is done
+            var SelectedTaskJob = jobs.FirstOrDefault(m => m.JobId == selectedTask.JobId);
+            var SelectedJobTasks = tasks.Where(m=>m.JobId == SelectedTaskJob.JobId).ToList();
+            var lasttask = SelectedJobTasks.Last();
+
+            if (lasttask.TaskId == selectedTask.TaskId)
+            {
+                var today = new ReportsDB().GetAllTodayEntry();
+                today = today.Where(m => m.Date.Date == DateTime.Today).ToList();
+
+                var todayproduct = today.FirstOrDefault(m=>m.JobId == SelectedTaskJob.JobId);
+                todayproduct.IsComplete = selectedTask.TaskQuantityDone;
+
+                SelectedTaskJob.CurrentQuantity = todayproduct.IsComplete;
+
+
+                new ReportsDB().UpdateTodayEntry(todayproduct);
+                new JobDB().UpdateJob(SelectedTaskJob);
+                //new JobDB().UpdateProduct(selectedTask);
+                // update today
+            }
 
         }
 

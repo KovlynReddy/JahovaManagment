@@ -132,6 +132,12 @@
     <Compile Include="Forms\EndShift.Designer.cs">
       <DependentUpon>EndShift.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\InventoryMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InventoryMenu.Designer.cs">
+      <DependentUpon>InventoryMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\QuickAssignTask.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,12 @@
     <Compile Include="Forms\UpdateEmployee.Designer.cs">
       <DependentUpon>UpdateEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UploadDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UploadDocument.Designer.cs">
+      <DependentUpon>UploadDocument.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ViewEmployees.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +203,12 @@
     </Compile>
     <Compile Include="Forms\ViewUncompleteTasks.Designer.cs">
       <DependentUpon>ViewUncompleteTasks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\WaitingForKeys.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WaitingForKeys.Designer.cs">
+      <DependentUpon>WaitingForKeys.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu\Form1.cs">
       <SubType>Form</SubType>
@@ -245,6 +263,9 @@
     <EmbeddedResource Include="Forms\EndShift.resx">
       <DependentUpon>EndShift.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InventoryMenu.resx">
+      <DependentUpon>InventoryMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\QuickAssignTask.resx">
       <DependentUpon>QuickAssignTask.cs</DependentUpon>
     </EmbeddedResource>
@@ -274,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ViewUncompleteTasks.resx">
       <DependentUpon>ViewUncompleteTasks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WaitingForKeys.resx">
+      <DependentUpon>WaitingForKeys.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

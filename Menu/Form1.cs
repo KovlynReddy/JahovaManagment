@@ -1,4 +1,7 @@
-﻿using JahovaManagment.Forms;
+﻿using JahovaDLL.BussinessLogic.BussinessAccess;
+using JahovaDLL.BussinessLogic.ReportAccess;
+using JahovaDLL.DataAccess.EmployeeAccess;
+using JahovaManagment.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -91,7 +94,29 @@ namespace JahovaManagment
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            var dailyentries = new ReportsDB().GetAllDailyEntries();
+            var jobs = new JobDB().GetAllJobs();
+            var products = new JobDB().GetAllProducts();
+            var tasks = new EmployeeDB().GetAllTasks();
+            var employees = new EmployeeDB().GetAllEmployees();
 
+            #region BarChart1
+
+            chart2.Series.Clear();  
+            var series7 = new System.Windows.Forms.DataVisualization.Charting.Series
+            {
+                Name = "Jobs",
+                Color = System.Drawing.Color.Green
+            };
+
+            chart2.Series.Add(series7);
+
+            foreach (var task in jobs)
+            {
+                series7.Points.AddXY(task.JobDescription, (task.CurrentQuantity));
+            }
+            chart2.Invalidate();
+            #endregion
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -137,6 +162,21 @@ namespace JahovaManagment
         private void button20_Click(object sender, EventArgs e)
         {
             new AddTask().Show();
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            new UploadDocument().Show();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            new InventoryMenu().Show();
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            new ViewUncompleteTasks().Show();
         }
     }
 }

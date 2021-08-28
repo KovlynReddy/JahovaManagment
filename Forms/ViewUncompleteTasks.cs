@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JahovaDLL.DataAccess.EmployeeAccess;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +20,8 @@ namespace JahovaManagment.Forms
 
         private void ViewUncompleteTasks_Load(object sender, EventArgs e)
         {
-
+            var tasks = new EmployeeDB().GetAllTasks();
+            dataGridView1.DataSource = tasks;
         }
 
         private void button3_Click(object sender, EventArgs e)

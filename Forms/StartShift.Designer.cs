@@ -53,9 +53,9 @@ namespace JahovaManagment.Forms
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(91, 57);
+            this.comboBox2.Location = new System.Drawing.Point(91, 77);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(476, 21);
+            this.comboBox2.Size = new System.Drawing.Size(197, 21);
             this.comboBox2.TabIndex = 5;
             // 
             // comboBox1
@@ -72,14 +72,14 @@ namespace JahovaManagment.Forms
             this.Assign.Name = "Assign";
             this.Assign.Size = new System.Drawing.Size(75, 23);
             this.Assign.TabIndex = 8;
-            this.Assign.Text = "Assign";
+            this.Assign.Text = "Assign Job";
             this.Assign.UseVisualStyleBackColor = true;
             this.Assign.Click += new System.EventHandler(this.Assign_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(29, 65);
+            this.label3.Location = new System.Drawing.Point(29, 80);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 9;
@@ -88,7 +88,7 @@ namespace JahovaManagment.Forms
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(29, 92);
+            this.label4.Location = new System.Drawing.Point(29, 107);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(31, 13);
             this.label4.TabIndex = 11;
@@ -97,9 +97,9 @@ namespace JahovaManagment.Forms
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(91, 84);
+            this.comboBox3.Location = new System.Drawing.Point(91, 104);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(476, 21);
+            this.comboBox3.Size = new System.Drawing.Size(23, 21);
             this.comboBox3.TabIndex = 10;
             // 
             // dataGridView1

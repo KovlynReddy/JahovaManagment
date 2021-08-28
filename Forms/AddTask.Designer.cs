@@ -43,6 +43,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.AddPicture = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmbProducts = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.spnQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StepNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -69,7 +71,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 47);
+            this.label3.Location = new System.Drawing.Point(30, 69);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 13);
             this.label3.TabIndex = 34;
@@ -78,7 +80,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 76);
+            this.label2.Location = new System.Drawing.Point(30, 98);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 13);
             this.label2.TabIndex = 32;
@@ -95,7 +97,7 @@
             // 
             // redDescribe
             // 
-            this.redDescribe.Location = new System.Drawing.Point(189, 76);
+            this.redDescribe.Location = new System.Drawing.Point(189, 98);
             this.redDescribe.Name = "redDescribe";
             this.redDescribe.Size = new System.Drawing.Size(369, 85);
             this.redDescribe.TabIndex = 39;
@@ -103,7 +105,7 @@
             // 
             // spnQuantity
             // 
-            this.spnQuantity.Location = new System.Drawing.Point(189, 45);
+            this.spnQuantity.Location = new System.Drawing.Point(189, 67);
             this.spnQuantity.Name = "spnQuantity";
             this.spnQuantity.Size = new System.Drawing.Size(369, 20);
             this.spnQuantity.TabIndex = 40;
@@ -111,7 +113,7 @@
             // IsntFirstStep
             // 
             this.IsntFirstStep.AutoSize = true;
-            this.IsntFirstStep.Location = new System.Drawing.Point(189, 198);
+            this.IsntFirstStep.Location = new System.Drawing.Point(189, 220);
             this.IsntFirstStep.Name = "IsntFirstStep";
             this.IsntFirstStep.Size = new System.Drawing.Size(102, 17);
             this.IsntFirstStep.TabIndex = 41;
@@ -121,7 +123,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(30, 229);
+            this.label4.Location = new System.Drawing.Point(30, 251);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 13);
             this.label4.TabIndex = 43;
@@ -130,14 +132,14 @@
             // cmbTasks
             // 
             this.cmbTasks.FormattingEnabled = true;
-            this.cmbTasks.Location = new System.Drawing.Point(189, 221);
+            this.cmbTasks.Location = new System.Drawing.Point(189, 243);
             this.cmbTasks.Name = "cmbTasks";
             this.cmbTasks.Size = new System.Drawing.Size(369, 21);
             this.cmbTasks.TabIndex = 44;
             // 
             // StepNumber
             // 
-            this.StepNumber.Location = new System.Drawing.Point(189, 258);
+            this.StepNumber.Location = new System.Drawing.Point(189, 280);
             this.StepNumber.Name = "StepNumber";
             this.StepNumber.Size = new System.Drawing.Size(369, 20);
             this.StepNumber.TabIndex = 45;
@@ -145,7 +147,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(31, 260);
+            this.label5.Location = new System.Drawing.Point(31, 282);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(69, 13);
             this.label5.TabIndex = 46;
@@ -179,12 +181,31 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(32, 47);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 13);
+            this.label6.TabIndex = 50;
+            this.label6.Text = "Select Product";
+            // 
+            // cmbProducts
+            // 
+            this.cmbProducts.FormattingEnabled = true;
+            this.cmbProducts.Location = new System.Drawing.Point(189, 44);
+            this.cmbProducts.Name = "cmbProducts";
+            this.cmbProducts.Size = new System.Drawing.Size(369, 21);
+            this.cmbProducts.TabIndex = 51;
+            // 
             // AddTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.ClientSize = new System.Drawing.Size(609, 528);
+            this.Controls.Add(this.cmbProducts);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.AddPicture);
@@ -229,5 +250,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button AddPicture;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cmbProducts;
     }
 }

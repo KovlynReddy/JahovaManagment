@@ -1,6 +1,7 @@
 ﻿using JahovaDLL.BussinessLogic.BussinessAccess;
 using JahovaDLL.BussinessLogic.ReportAccess;
 using JahovaDLL.DataAccess.EmployeeAccess;
+using JahovaDLL.Models.JohavaEmployeeManagment;
 using LiveCharts;
 using LiveCharts.Wpf;
 using System;
@@ -55,6 +56,9 @@ namespace JahovaManagment.Forms
             var tasks = new EmployeeDB().GetAllTasks();
             var employees = new EmployeeDB().GetAllEmployees();
 
+            comboBox2.DataSource = tasks;
+            comboBox2.DisplayMember = "TaskDescription";
+
             //var jobgraph = jobs.Select(m => new { Name = m.JobDescription, Required = m.TotalQuantity, current = m.CurrentQuantity, date = m.StartDate });
 
             #region Chart1
@@ -93,16 +97,16 @@ namespace JahovaManagment.Forms
             cartesianChart2.LegendLocation = LiveCharts.LegendLocation.Right;
 
             cartesianChart2.Series.Clear();
-            SeriesCollection series2 = new SeriesCollection();
-            List<int> values2 = new List<int>();
+            SeriesCollection series0 = new SeriesCollection();
+            List<int> values0 = new List<int>();
             foreach (var product in products)
             {
-                values2.Add(product.ProductQuantity);
-                series2.Add(new LineSeries() { Title = product.ProductDescription, Values = new ChartValues<int>(values2) });
+                values0.Add(product.ProductQuantity);
+                series0.Add(new LineSeries() { Title = product.ProductDescription, Values = new ChartValues<int>(values0) });
 
             }
 
-            cartesianChart2.Series = series2;
+            cartesianChart2.Series = series0;
             #endregion
 
             #region Chart3
@@ -132,28 +136,86 @@ namespace JahovaManagment.Forms
             #region Chart4
             cartesianChart4.AxisX.Add(new LiveCharts.Wpf.Axis
             {
-                Title = "Employee"
+                Title = "Date"
             });
             cartesianChart4.AxisY.Add(new LiveCharts.Wpf.Axis
             {
                 Title = "Quantity"
             });
-            cartesianChart4.LegendLocation = LiveCharts.LegendLocation.Right;
+            #endregion
 
-            cartesianChart4.Series.Clear();
-            SeriesCollection series4 = new SeriesCollection();
-            List<int> values4 = new List<int>();
+            #region BarChart1
+
+            chart1.Series.Clear();
+            var series1 = new System.Windows.Forms.DataVisualization.Charting.Series
+            {
+                Name = "Tasks",
+                Color = System.Drawing.Color.Green
+            };
+
+            chart1.Series.Add(series1);
+
             foreach (var task in tasks)
             {
-                values4.Add(task.TaskQuantityDone);
-                series4.Add(new LineSeries() { Title = task.TaskDescription, Values = new ChartValues<int>(values4) });
-
+                series1.Points.AddXY(task.TaskDescription, (task.TaskQuantityDone));
             }
+            chart1.Invalidate();
+            #endregion
 
-            cartesianChart3.Series = series3;
+            #region BarChart2
+
+            chart2.Series.Clear();
+            var series2 = new System.Windows.Forms.DataVisualization.Charting.Series
+            {
+                Name = "Dates",
+                Color = System.Drawing.Color.Green
+            };
+
+            chart2.Series.Add(series2);
+
+            foreach (var task in dailyentries)
+            {
+                series2.Points.AddXY(task.DateTime, (task.QuantityProduced));
+            }
+            chart2.Invalidate();
             #endregion
 
 
+            #region BarChart3
+
+            chart4.Series.Clear();
+            var series6 = new System.Windows.Forms.DataVisualization.Charting.Series
+            {
+                Name = "Products",
+                Color = System.Drawing.Color.Green
+            };
+
+            chart4.Series.Add(series6);
+
+            foreach (var task in products)
+            {
+                series6.Points.AddXY(task.ProductDescription, (task.ProductCompleted));
+            }
+            //chart4.Invalidate();
+            #endregion
+
+            #region BarChart4
+
+            chart3.Series.Clear();
+            var series7 = new System.Windows.Forms.DataVisualization.Charting.Series
+            {
+                Name = "Jobs",
+                Color = System.Drawing.Color.Green
+            };
+
+            chart3.Series.Add(series7);
+
+            foreach (var task in jobs)
+            {
+                series7.Points.AddXY(task.JobDescription, (task.CurrentQuantity));
+            }
+            chart3.Invalidate();
+            #endregion
 
         }
 
@@ -166,6 +228,63 @@ namespace JahovaManagment.Forms
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void pieChart1_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
+        {
+         
+        }
+
+        private void chart1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // jobs
+
+            var tasks = new EmployeeDB().GetAllTasks();
+            var dailyentries = new ReportsDB().GetAllDailyEntries();
+            var jobs = new JobDB().GetAllJobs();
+
+            tasks = tasks.Where(m=>m.TaskId == ((ATask)(comboBox2.SelectedItem)).TaskId).ToList();
+            dailyentries = dailyentries.Where(m =>m.TaskId == tasks.FirstOrDefault().TaskId).ToList();
+            chart2.Series.Clear();
+            var series2 = new System.Windows.Forms.DataVisualization.Charting.Series
+            {
+                Name = "Dates",
+                Color = System.Drawing.Color.Green
+            };
+
+            chart2.Series.Add(series2);
+
+            foreach (var task in dailyentries)
+            {
+                series2.Points.AddXY(task.DateTime, (task.QuantityProduced));
+            }
+            chart2.Invalidate();
+
+
+            #region Chart3
+
+            cartesianChart4.LegendLocation = LiveCharts.LegendLocation.Right;
+
+            cartesianChart4.Series.Clear();
+            SeriesCollection series3 = new SeriesCollection();
+            List<int> values3 = new List<int>();
+            foreach (var task in dailyentries)
+            {
+                values3.Add(task.QuantityProduced);
+                series3.Add(new LineSeries() { Title = task.DateTime.ToString(), Values = new ChartValues<int>(values3) });
+
+            }
+
+            cartesianChart4.Series = series3;
+            #endregion
+
+
+
         }
     }
 

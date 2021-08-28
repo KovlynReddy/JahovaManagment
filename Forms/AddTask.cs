@@ -35,7 +35,7 @@ namespace JahovaManagment.Forms
                 newTask.StepNumber = Convert.ToInt32(StepNumber.Value);
             newTask.PreviousStep =  ((ATask)cmbTasks.SelectedItem).TaskId;// get from list and combo box
             }
-                newTask.StepNumber = 1 ;
+            newTask.StepNumber = (int)StepNumber.Value ;
             newTask.JobId = ((Job)cmbJobs.SelectedItem).JobId;// get from list and combo box
             newTask.TaskQuantityRequired = Convert.ToInt32(spnQuantity.Value);
             newTask.TaskDescription = redDescribe.Text;
@@ -47,10 +47,14 @@ namespace JahovaManagment.Forms
         private void AddTask_Load(object sender, EventArgs e)
         {
             Jobs = new JobDB().GetAllJobs();
+            var Products = new JobDB().GetAllProducts();
             Tasks = new EmployeeDB().GetAllTasks();
+
 
             cmbJobs.DataSource = Jobs;
             cmbJobs.DisplayMember = "JobDescription";
+            cmbProducts.DataSource = Products;
+            cmbProducts.DisplayMember = "ProductDiscrption";
             cmbTasks.DataSource =Tasks;
             cmbTasks.DisplayMember = "TaskDescription";
         }
@@ -77,6 +81,7 @@ namespace JahovaManagment.Forms
 
                 //BarcodeReader Reader = new BarcodeReader();
                 //Result result = Reader.Decode(source);
+
                 cmbTasks.Text = camera.Text;
             }
             pictureBox1.Image = (Bitmap)Image.FromFile(filename);

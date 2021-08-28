@@ -24,7 +24,7 @@ namespace JahovaManagment.Forms
 
         private void Today_Load(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = new EmployeeDB().GetAllTasks();
+            var allTasks = new EmployeeDB().GetAllTasks();
 
             var PresentEmployeesIds = new ReportsDB().GetTodaysDailyRegisters().Where(m => m.IsHere == 1);
             List<Employee> ListEmployeesPresent = new List<Employee>();
@@ -41,7 +41,14 @@ namespace JahovaManagment.Forms
             dailyEntries = dailyEntries.Where(m => m.DateTime.Date == DateTime.Today).ToList();
             dataGridView4.DataSource = dailyEntries;
 
+            var selectedTasks = new List<ATask>();
+            foreach (var todayjob in today)
+            {
+            selectedTasks.AddRange(allTasks.Where(m => m.JobId == todayjob.JobId ).ToList());
 
+            }
+
+            dataGridView1.DataSource = selectedTasks;
 
             dataGridView2.DataSource = ListEmployeesPresent;
         }
@@ -96,8 +103,7 @@ namespace JahovaManagment.Forms
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ATask selectedemployee = dataGridView1.SelectedRows[0].DataBoundItem as ATask;
-            new DailyEntries(selectedemployee).Show();
+            new WaitingForKeys().Show();
         }
     }
 }
