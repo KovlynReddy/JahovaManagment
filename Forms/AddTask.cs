@@ -111,7 +111,7 @@ namespace JahovaManagment.Forms
             cmbJobs.DataSource = Jobs;
             cmbJobs.DisplayMember = "JobDescription";
             cmbProducts.DataSource = Products;
-            cmbProducts.DisplayMember = "ProductDiscrption";
+            cmbProducts.DisplayMember = "ProductDescription";
             cmbTasks.DataSource = Tasks;
             cmbTasks.DisplayMember = "TaskDescription";
         }
