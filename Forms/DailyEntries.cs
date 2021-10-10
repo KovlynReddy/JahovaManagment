@@ -91,7 +91,8 @@ namespace JahovaManagment.Forms
 
             var alltasks = new EmployeeDB().GetAllTasks().FirstOrDefault(m=>m.TaskId == selectedTask.TaskId);
 
-            var material = new InventoryDB().GetAllMaterials().FirstOrDefault(m=>m.MaterialId==alltasks.MaterialId);
+            var allmaterials = new InventoryDB().GetAllMaterials();
+            var material = allmaterials.FirstOrDefault(m=>m.MaterialId==alltasks.MaterialId);
 
             newentry.MaterialId = alltasks.MaterialId;
             newentry.MaterialAmount = alltasks.MaterialAmount;
@@ -153,7 +154,21 @@ namespace JahovaManagment.Forms
                 new JobDB().UpdateJob(SelectedTaskJob);
                 //new JobDB().UpdateProduct(selectedTask);
                 // update today
+
+                //update inventoy
             }
+
+            var entries = new ReportsDB().GetAllDailyEntries().Where(m=>m.MaterialId == material.MaterialId);
+
+            int total = 0;
+            foreach (var entry in entries)
+            {
+                total -= entry.MaterialAmount;
+            }
+
+            material.Quantity = total;
+
+            new InventoryDB().UpdateMaterial(material);
 
         }
 

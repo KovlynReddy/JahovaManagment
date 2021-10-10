@@ -36,6 +36,7 @@ namespace JahovaManagment.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +51,7 @@ namespace JahovaManagment.Forms
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(665, 463);
+            this.button1.Location = new System.Drawing.Point(703, 463);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -60,7 +61,7 @@ namespace JahovaManagment.Forms
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(547, 463);
+            this.button2.Location = new System.Drawing.Point(504, 463);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
@@ -100,11 +101,22 @@ namespace JahovaManagment.Forms
             this.label2.TabIndex = 6;
             this.label2.Text = "Amount";
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(605, 463);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "Deposit";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // InventoryMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(790, 587);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.label1);
@@ -131,5 +143,6 @@ namespace JahovaManagment.Forms
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button3;
     }
 }
