@@ -2,6 +2,8 @@
 using JahovaDLL.BussinessLogic.ReportAccess;
 using JahovaDLL.DataAccess.EmployeeAccess;
 using JahovaDLL.JahovaBussiness;
+using JahovaDLL.JohavaEmployeeManagment;
+using JahovaDLL.Models.JohavaEmployeeManagment;
 using JahovaDLL.Models.Reports;
 using System;
 using System.Collections.Generic;
@@ -17,6 +19,13 @@ namespace JahovaManagment.Forms
 {
     public partial class StartShift : Form
     {
+        private List<Supplier> suppliers;
+        private List<Job> jobs;
+        private List<Product> products;
+        private List<Employee> employees;
+        private List<ATask> tasks;
+        private List<TodayEntry> today;
+
         public StartShift()
         {
             InitializeComponent();
@@ -24,14 +33,14 @@ namespace JahovaManagment.Forms
 
         private void StartShift_Load(object sender, EventArgs e)
         {
-            var suppliers = new JobDB().GetAllSuppliers();
-            var jobs = new JobDB().GetAllJobs();
-            var products = new JobDB().GetAllProducts();
+             suppliers = new JobDB().GetAllSuppliers();
+             jobs = new JobDB().GetAllJobs();
+             products = new JobDB().GetAllProducts();
 
-            var employees = new EmployeeDB().GetAllEmployees();
-            var tasks = new EmployeeDB().GetAllTasks();
+             employees = new EmployeeDB().GetAllEmployees();
+             tasks = new EmployeeDB().GetAllTasks();
 
-            var today = new ReportsDB().GetAllTodayEntry();
+             today = new ReportsDB().GetAllTodayEntry();
             today = today.Where(m => m.Date.Date == DateTime.Today).ToList();
             dataGridView1.DataSource = today;
 
@@ -65,6 +74,38 @@ namespace JahovaManagment.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = today;
+
+            products = new JobDB().GetAllProducts();
+            products = products.Where(m=>m.JobId==((Job)comboBox1.SelectedItem).JobId).ToList();
+
+            comboBox1.DataSource = jobs;
+            comboBox2.DataSource = products;
+            comboBox3.DataSource = tasks;
+
+
+            comboBox1.DisplayMember = "JobDescription";
+            comboBox2.DisplayMember = "ProductDescription";
+            comboBox3.DisplayMember = "TaskDescription";
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tasks = new EmployeeDB().GetAllTasks();
+            tasks = tasks.Where(m => m.JobId == ((Job)comboBox1.SelectedItem).JobId).ToList();
+
+            comboBox1.DataSource = jobs;
+            comboBox2.DataSource = products;
+            comboBox3.DataSource = tasks;
+
+
+            comboBox1.DisplayMember = "JobDescription";
+            comboBox2.DisplayMember = "ProductDescription";
+            comboBox3.DisplayMember = "TaskDescription";
         }
     }
 }

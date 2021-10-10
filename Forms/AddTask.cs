@@ -19,6 +19,9 @@ namespace JahovaManagment.Forms
     public partial class AddTask : Form
     {
         List<Job> Jobs = new List<Job>();
+
+        public List<Product> Products { get; private set; }
+
         List<ATask> Tasks = new List<ATask>();
 
 
@@ -47,7 +50,7 @@ namespace JahovaManagment.Forms
         private void AddTask_Load(object sender, EventArgs e)
         {
             Jobs = new JobDB().GetAllJobs();
-            var Products = new JobDB().GetAllProducts();
+            Products = new JobDB().GetAllProducts();
             Tasks = new EmployeeDB().GetAllTasks();
 
 
@@ -99,6 +102,31 @@ namespace JahovaManagment.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cmbJobs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Products = new JobDB().GetAllProducts().Where(m => m.JobId == ((Job)cmbJobs.SelectedItem).JobId).ToList();
+
+            cmbJobs.DataSource = Jobs;
+            cmbJobs.DisplayMember = "JobDescription";
+            cmbProducts.DataSource = Products;
+            cmbProducts.DisplayMember = "ProductDiscrption";
+            cmbTasks.DataSource = Tasks;
+            cmbTasks.DisplayMember = "TaskDescription";
+        }
+
+        private void cmbProducts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Tasks = new EmployeeDB().GetAllTasks().Where(m => m.JobId == ((Job)cmbJobs.SelectedItem).JobId).ToList();
+
+
+            cmbJobs.DataSource = Jobs;
+            cmbJobs.DisplayMember = "JobDescription";
+            cmbProducts.DataSource = Products;
+            cmbProducts.DisplayMember = "ProductDiscrption";
+            cmbTasks.DataSource = Tasks;
+            cmbTasks.DisplayMember = "TaskDescription";
         }
     }
 }

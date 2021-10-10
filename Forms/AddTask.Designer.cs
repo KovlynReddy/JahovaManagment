@@ -67,6 +67,7 @@
             this.cmbJobs.Name = "cmbJobs";
             this.cmbJobs.Size = new System.Drawing.Size(369, 21);
             this.cmbJobs.TabIndex = 35;
+            this.cmbJobs.SelectedIndexChanged += new System.EventHandler(this.cmbJobs_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -197,6 +198,7 @@
             this.cmbProducts.Name = "cmbProducts";
             this.cmbProducts.Size = new System.Drawing.Size(369, 21);
             this.cmbProducts.TabIndex = 51;
+            this.cmbProducts.SelectedIndexChanged += new System.EventHandler(this.cmbProducts_SelectedIndexChanged);
             // 
             // AddTask
             // 
