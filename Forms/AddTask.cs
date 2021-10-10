@@ -1,5 +1,7 @@
 ﻿using JahovaDLL.BussinessLogic.BussinessAccess;
+using JahovaDLL.BussinessLogic.InventoryAccess;
 using JahovaDLL.DataAccess.EmployeeAccess;
+using JahovaDLL.JahaovaInventoryManagment;
 using JahovaDLL.JahovaBussiness;
 using JahovaDLL.Models.JohavaEmployeeManagment;
 using System;
@@ -24,6 +26,9 @@ namespace JahovaManagment.Forms
 
         List<ATask> Tasks = new List<ATask>();
 
+        public List<Material> Materials { get; private set; }
+
+        private List<Material> MaterialsExtra;
 
         public AddTask()
         {
@@ -38,6 +43,10 @@ namespace JahovaManagment.Forms
                 newTask.StepNumber = Convert.ToInt32(StepNumber.Value);
             newTask.PreviousStep =  ((ATask)cmbTasks.SelectedItem).TaskId;// get from list and combo box
             }
+            newTask.MaterialId = ((Material)cmbMaterial.SelectedItem).MaterialId;
+            newTask.MaterialAmount = (int)spnMaterials.Value;
+            newTask.MaterialIdExtra = ((Material)cmbMaterialsExtra.SelectedItem).MaterialId;
+            newTask.MaterialAmountExtra = (int)spnMaterialsExtra.Value;
             newTask.StepNumber = (int)StepNumber.Value ;
             newTask.JobId = ((Job)cmbJobs.SelectedItem).JobId;// get from list and combo box
             newTask.TaskQuantityRequired = Convert.ToInt32(spnQuantity.Value);
@@ -52,8 +61,13 @@ namespace JahovaManagment.Forms
             Jobs = new JobDB().GetAllJobs();
             Products = new JobDB().GetAllProducts();
             Tasks = new EmployeeDB().GetAllTasks();
+            Materials = new InventoryDB().GetAllMaterials();
+            MaterialsExtra = new InventoryDB().GetAllMaterials();
 
-
+            cmbMaterial.DataSource = Materials;
+            cmbMaterial.DisplayMember = "Name";
+            cmbMaterialsExtra.DataSource = MaterialsExtra;
+            cmbMaterialsExtra.DisplayMember = "Name";
             cmbJobs.DataSource = Jobs;
             cmbJobs.DisplayMember = "JobDescription";
             cmbProducts.DataSource = Products;
@@ -108,23 +122,17 @@ namespace JahovaManagment.Forms
         {
             Products = new JobDB().GetAllProducts().Where(m => m.JobId == ((Job)cmbJobs.SelectedItem).JobId).ToList();
 
-            cmbJobs.DataSource = Jobs;
-            cmbJobs.DisplayMember = "JobDescription";
+            
             cmbProducts.DataSource = Products;
             cmbProducts.DisplayMember = "ProductDescription";
-            cmbTasks.DataSource = Tasks;
-            cmbTasks.DisplayMember = "TaskDescription";
+           
         }
 
         private void cmbProducts_SelectedIndexChanged(object sender, EventArgs e)
         {
             Tasks = new EmployeeDB().GetAllTasks().Where(m => m.JobId == ((Job)cmbJobs.SelectedItem).JobId).ToList();
 
-
-            cmbJobs.DataSource = Jobs;
-            cmbJobs.DisplayMember = "JobDescription";
-            cmbProducts.DataSource = Products;
-            cmbProducts.DisplayMember = "ProductDiscrption";
+            
             cmbTasks.DataSource = Tasks;
             cmbTasks.DisplayMember = "TaskDescription";
         }

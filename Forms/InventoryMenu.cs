@@ -24,6 +24,7 @@ namespace JahovaManagment.Forms
             // get all materials 
             var materials = new InventoryDB().GetMaterial(string.Empty);
             // get all inventory
+            
             dataGridView1.DataSource = materials;
             // get all used
             // get all transactions 

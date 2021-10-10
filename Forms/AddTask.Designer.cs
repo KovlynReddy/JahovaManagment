@@ -45,9 +45,19 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbProducts = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.spnMaterials = new System.Windows.Forms.NumericUpDown();
+            this.cmbMaterial = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.spnMaterialsExtra = new System.Windows.Forms.NumericUpDown();
+            this.cmbMaterialsExtra = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.spnQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StepNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spnMaterials)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spnMaterialsExtra)).BeginInit();
             this.SuspendLayout();
             // 
             // AddATask
@@ -100,7 +110,7 @@
             // 
             this.redDescribe.Location = new System.Drawing.Point(189, 98);
             this.redDescribe.Name = "redDescribe";
-            this.redDescribe.Size = new System.Drawing.Size(369, 85);
+            this.redDescribe.Size = new System.Drawing.Size(369, 35);
             this.redDescribe.TabIndex = 39;
             this.redDescribe.Text = "";
             // 
@@ -114,7 +124,7 @@
             // IsntFirstStep
             // 
             this.IsntFirstStep.AutoSize = true;
-            this.IsntFirstStep.Location = new System.Drawing.Point(189, 220);
+            this.IsntFirstStep.Location = new System.Drawing.Point(189, 269);
             this.IsntFirstStep.Name = "IsntFirstStep";
             this.IsntFirstStep.Size = new System.Drawing.Size(102, 17);
             this.IsntFirstStep.TabIndex = 41;
@@ -124,7 +134,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(30, 251);
+            this.label4.Location = new System.Drawing.Point(36, 295);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 13);
             this.label4.TabIndex = 43;
@@ -133,14 +143,14 @@
             // cmbTasks
             // 
             this.cmbTasks.FormattingEnabled = true;
-            this.cmbTasks.Location = new System.Drawing.Point(189, 243);
+            this.cmbTasks.Location = new System.Drawing.Point(189, 291);
             this.cmbTasks.Name = "cmbTasks";
             this.cmbTasks.Size = new System.Drawing.Size(369, 21);
             this.cmbTasks.TabIndex = 44;
             // 
             // StepNumber
             // 
-            this.StepNumber.Location = new System.Drawing.Point(189, 280);
+            this.StepNumber.Location = new System.Drawing.Point(189, 318);
             this.StepNumber.Name = "StepNumber";
             this.StepNumber.Size = new System.Drawing.Size(369, 20);
             this.StepNumber.TabIndex = 45;
@@ -148,7 +158,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(31, 282);
+            this.label5.Location = new System.Drawing.Point(36, 320);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(69, 13);
             this.label5.TabIndex = 46;
@@ -156,9 +166,9 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(33, 309);
+            this.pictureBox1.Location = new System.Drawing.Point(33, 377);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(198, 156);
+            this.pictureBox1.Size = new System.Drawing.Size(525, 88);
             this.pictureBox1.TabIndex = 48;
             this.pictureBox1.TabStop = false;
             // 
@@ -200,12 +210,86 @@
             this.cmbProducts.TabIndex = 51;
             this.cmbProducts.SelectedIndexChanged += new System.EventHandler(this.cmbProducts_SelectedIndexChanged);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(41, 166);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(46, 13);
+            this.label7.TabIndex = 55;
+            this.label7.Text = "Quantity";
+            // 
+            // spnMaterials
+            // 
+            this.spnMaterials.Location = new System.Drawing.Point(189, 166);
+            this.spnMaterials.Name = "spnMaterials";
+            this.spnMaterials.Size = new System.Drawing.Size(369, 20);
+            this.spnMaterials.TabIndex = 54;
+            // 
+            // cmbMaterial
+            // 
+            this.cmbMaterial.FormattingEnabled = true;
+            this.cmbMaterial.Location = new System.Drawing.Point(189, 139);
+            this.cmbMaterial.Name = "cmbMaterial";
+            this.cmbMaterial.Size = new System.Drawing.Size(369, 21);
+            this.cmbMaterial.TabIndex = 53;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(32, 147);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(90, 13);
+            this.label8.TabIndex = 52;
+            this.label8.Text = "Material Required";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(41, 221);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(46, 13);
+            this.label9.TabIndex = 59;
+            this.label9.Text = "Quantity";
+            // 
+            // spnMaterialsExtra
+            // 
+            this.spnMaterialsExtra.Location = new System.Drawing.Point(189, 224);
+            this.spnMaterialsExtra.Name = "spnMaterialsExtra";
+            this.spnMaterialsExtra.Size = new System.Drawing.Size(369, 20);
+            this.spnMaterialsExtra.TabIndex = 58;
+            // 
+            // cmbMaterialsExtra
+            // 
+            this.cmbMaterialsExtra.FormattingEnabled = true;
+            this.cmbMaterialsExtra.Location = new System.Drawing.Point(189, 197);
+            this.cmbMaterialsExtra.Name = "cmbMaterialsExtra";
+            this.cmbMaterialsExtra.Size = new System.Drawing.Size(369, 21);
+            this.cmbMaterialsExtra.TabIndex = 57;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(36, 197);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(90, 13);
+            this.label10.TabIndex = 56;
+            this.label10.Text = "Material Required";
+            // 
             // AddTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.ClientSize = new System.Drawing.Size(609, 528);
+            this.ClientSize = new System.Drawing.Size(609, 568);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.spnMaterialsExtra);
+            this.Controls.Add(this.cmbMaterialsExtra);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.spnMaterials);
+            this.Controls.Add(this.cmbMaterial);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.cmbProducts);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button1);
@@ -230,6 +314,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.spnQuantity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StepNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spnMaterials)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spnMaterialsExtra)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,5 +340,13 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmbProducts;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown spnMaterials;
+        private System.Windows.Forms.ComboBox cmbMaterial;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.NumericUpDown spnMaterialsExtra;
+        private System.Windows.Forms.ComboBox cmbMaterialsExtra;
+        private System.Windows.Forms.Label label10;
     }
 }

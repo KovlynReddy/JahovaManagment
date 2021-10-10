@@ -1,4 +1,5 @@
 ﻿using JahovaDLL.BussinessLogic.BussinessAccess;
+using JahovaDLL.BussinessLogic.InventoryAccess;
 using JahovaDLL.BussinessLogic.ReportAccess;
 using JahovaDLL.DataAccess.EmployeeAccess;
 using JahovaDLL.JohavaEmployeeManagment;
@@ -87,6 +88,13 @@ namespace JahovaManagment.Forms
             newentry.Note = richTextBox1.Text;
             newentry.OnTime =  1 ;
             newentry.Rating =  Convert.ToInt32(comboBox3.Text);
+
+            var alltasks = new EmployeeDB().GetAllTasks().FirstOrDefault(m=>m.TaskId == selectedTask.TaskId);
+
+            var material = new InventoryDB().GetAllMaterials().FirstOrDefault(m=>m.MaterialId==alltasks.MaterialId);
+
+            newentry.MaterialId = alltasks.MaterialId;
+            newentry.MaterialAmount = alltasks.MaterialAmount;
 
             new ReportsDB().AddDailyEntry(newentry);
 

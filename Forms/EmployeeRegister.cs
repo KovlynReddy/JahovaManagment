@@ -64,5 +64,16 @@ namespace JahovaManagment.Forms
 
             dataGridView2.DataSource = new ReportsDB().GetTodaysDailyRegisters();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var newEmployee = new Employee();
+
+            newEmployee.EmployeeName = textBox2.Text;
+            newEmployee.EmployeeID = Guid.NewGuid().ToString();
+
+
+            new EmployeeDB().AddEmployee(newEmployee);
+        }
     }
 }
